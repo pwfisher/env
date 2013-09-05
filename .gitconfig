@@ -7,4 +7,5 @@
 	email = patrick@pwfisher.com
 	name = Patrick Fisher
 [push]
-	default = simple
+	default = nothing
+
