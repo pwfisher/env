@@ -6,15 +6,18 @@ System environment configuration
 
     # Account
     ssh root@pwfisher.com
+    vi /etc/ssh/sshd_config # disable root login
     useradd pfisher
     passwd pfisher
-    visudo
+    visudo # add pfisher as sudoer
+    exit
+    ssh pfisher@pwfisher.com
     
     # Git
-    yum install git
+    sudo yum install git
     cd ~/.ssh
     ssh-keygen -t rsa -C "patrick@pwfisher.com"
-    cat ~/.ssh/id_rsa.pub # then add key to account at github.com
+    cat ~/.ssh/id_rsa.pub # add at github.com
     
     # Env
     cd ~/projects
@@ -25,15 +28,12 @@ System environment configuration
     # Firewall
     yum install iptables
     cp ~/projects/env/iptables /etc/sysconfig/iptables
-    echo '1' > /proc/sys/net/ipv4/conf/eth0/forwarding
-    service iptables restart
+    su -c 'echo "1" > /proc/sys/net/ipv4/conf/eth0/forwarding'
+    su -c 'service iptables restart'
     
     # Node
-    rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
-    yum install node npm
-    
-    exit
-    ssh pfisher@pwfisher.com
+    sudo rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+    sudo yum install node npm
     
     # Server
     sudo npm install -g forever
@@ -45,4 +45,3 @@ System environment configuration
     forever start pwfisher.com/proxy.js
     forever start pwfisher.com/index.js
     forever start ranx.us/index.js
-
