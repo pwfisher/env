@@ -1,0 +1,10 @@
+[color]
+	ui = true
+[core]
+	pager = cat
+	editor = nano
+[user]
+	email = patrick@pwfisher.com
+	name = Patrick Fisher
+[push]
+	default = simple
