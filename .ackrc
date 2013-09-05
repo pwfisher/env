@@ -1,0 +1,7 @@
+--type-set=json=.json
+--type-set=pres=.pres
+--type-set=scss=.scss
+--type-set=dust=.dust
+--ignore-dir=build
+--ignore-dirs=node_modules
+
