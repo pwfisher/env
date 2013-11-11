@@ -1,8 +1,12 @@
 #!/bin/sh
 
-cp .ackrc ~
-cp .bash_profile ~
-cp .gitconfig ~
+###
+# Link personal env config files to copies under SCM in this project.
+#
+for FILE in .ackrc .bash_profile .gitconfig
+do
+	ln projects/env/$FILE ~/$FILE
+done
 
 ln -nfs ~/projects/env/bin ~/bin
 ln -nfs ~/projects/env/public_html ~/public_html
